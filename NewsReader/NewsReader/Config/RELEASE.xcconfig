@@ -1,0 +1,16 @@
+//
+//  Configurator.swift
+//  NewsReader
+//
+//  Created by Varun Mehta on 10/9/24.
+//  Copyright © 2024 NewsReader. All rights reserved.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+#include "Pods/Target Support Files/Pods-NewsReader/Pods-NewsReader.release.xcconfig"
+
+//-----NewsReader-----------
+TARGET_HOST = newsapi.org
+API_KEY = 3fd1e11ea3984d1c9c6d324af245aea1
