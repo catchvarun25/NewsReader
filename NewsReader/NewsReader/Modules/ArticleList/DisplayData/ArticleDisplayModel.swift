@@ -26,13 +26,16 @@ struct ArticleDisplayModel {
         }
     }
     
-    init(_ response: ArticleResp) {
-        self.title = response.title
+    init? (_ response: ArticleResp) {
+        guard let title = response.title,
+              let imageURL = response.urlToImage,
+              let articleURL = response.url else { return nil }
+        self.title = title
+        self.articleURL = articleURL
+        self.imageURL = imageURL
         self.author = response.author
         self.description = response.description
         self.source = response.source?.name
-        self.articleURL = response.url
-        self.imageURL = response.urlToImage
         self.publishedDate = response.publishedAt
     }
 }

@@ -77,10 +77,12 @@ class NRPageCollectionViewController: UICollectionViewController {
     }
     
     func setupCollection() {
-        
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
     }
     
     private func resetData() {
+        prevPageCount = 0
         sourcePageNumber = Constants.kStartPageNumber
     }
     

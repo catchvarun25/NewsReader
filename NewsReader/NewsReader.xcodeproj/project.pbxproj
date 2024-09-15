@@ -16,6 +16,9 @@
 		96D6F5FD280F47B0009338BF /* UIColorExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6F5FB280F47B0009338BF /* UIColorExtn.swift */; };
 		96D6F5FE280F47B0009338BF /* UIFontExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6F5FC280F47B0009338BF /* UIFontExtn.swift */; };
 		B9143D0A2C94500700677B10 /* SizeExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9143D092C94500700677B10 /* SizeExtn.swift */; };
+		B9143D0F2C94865B00677B10 /* NewsReaderHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9143D0E2C94865B00677B10 /* NewsReaderHomeViewController.swift */; };
+		B9143D112C948AB500677B10 /* UIViewControllerContainmentExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9143D102C948AB500677B10 /* UIViewControllerContainmentExtn.swift */; };
+		B9143D132C948CF900677B10 /* NewsReaderHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9143D122C948CF900677B10 /* NewsReaderHomeViewModel.swift */; };
 		B94313C52BF9E1B300F4EE62 /* NRSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94313C42BF9E1B300F4EE62 /* NRSpacerView.swift */; };
 		B947E4FB2BFC848A00454D71 /* ArticleListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B947E4FA2BFC848A00454D71 /* ArticleListCell.swift */; };
 		B947E4FD2BFCF8F100454D71 /* NRRefreshCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B947E4FC2BFCF8F100454D71 /* NRRefreshCollectionViewController.swift */; };
@@ -39,7 +42,11 @@
 		B958778D2BF99502008E0330 /* UIViewControllerExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B958778C2BF99502008E0330 /* UIViewControllerExtn.swift */; };
 		B958778F2BF9AF27008E0330 /* NSAttributedStringExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B958778E2BF9AF27008E0330 /* NSAttributedStringExtn.swift */; };
 		B95877912BF9B5A6008E0330 /* ArrayExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B95877902BF9B5A6008E0330 /* ArrayExtn.swift */; };
+		B96D1D2F2C95532C004087F3 /* CategoryListItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96D1D2E2C95532C004087F3 /* CategoryListItemCell.swift */; };
+		B96D1D312C9553C0004087F3 /* NRLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96D1D302C9553C0004087F3 /* NRLabel.swift */; };
+		B96D1D332C95566A004087F3 /* CommonStyleExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96D1D322C95566A004087F3 /* CommonStyleExtn.swift */; };
 		B97AF4FF2BFA45C700C1E7AD /* UILabelExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B97AF4FE2BFA45C700C1E7AD /* UILabelExtn.swift */; };
+		B987BA1A2C96FF7B00B4671B /* ArticleDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B987BA192C96FF7B00B4671B /* ArticleDetailsViewController.swift */; };
 		B99A580A2BFAF04B008D0C48 /* NRDividerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99A58092BFAF04B008D0C48 /* NRDividerView.swift */; };
 		B99A580C2BFB060E008D0C48 /* UIViewSizeExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99A580B2BFB060E008D0C48 /* UIViewSizeExtn.swift */; };
 		B99B69682BF9D3D600855064 /* UIImageViewExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99B69672BF9D3D600855064 /* UIImageViewExtn.swift */; };
@@ -82,6 +89,9 @@
 		A6D516889A064DCA86F4BF4A /* Pods-ProductViewerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductViewerTests.debug.xcconfig"; path = "Target Support Files/Pods-ProductViewerTests/Pods-ProductViewerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7887A2CE34816CBAC5B7251 /* Pods-ProductViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductViewer.debug.xcconfig"; path = "Target Support Files/Pods-ProductViewer/Pods-ProductViewer.debug.xcconfig"; sourceTree = "<group>"; };
 		B9143D092C94500700677B10 /* SizeExtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeExtn.swift; sourceTree = "<group>"; };
+		B9143D0E2C94865B00677B10 /* NewsReaderHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsReaderHomeViewController.swift; sourceTree = "<group>"; };
+		B9143D102C948AB500677B10 /* UIViewControllerContainmentExtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerContainmentExtn.swift; sourceTree = "<group>"; };
+		B9143D122C948CF900677B10 /* NewsReaderHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsReaderHomeViewModel.swift; sourceTree = "<group>"; };
 		B94313C42BF9E1B300F4EE62 /* NRSpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRSpacerView.swift; sourceTree = "<group>"; };
 		B947E4FA2BFC848A00454D71 /* ArticleListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListCell.swift; sourceTree = "<group>"; };
 		B947E4FC2BFCF8F100454D71 /* NRRefreshCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRRefreshCollectionViewController.swift; sourceTree = "<group>"; };
@@ -105,7 +115,11 @@
 		B958778C2BF99502008E0330 /* UIViewControllerExtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtn.swift; sourceTree = "<group>"; };
 		B958778E2BF9AF27008E0330 /* NSAttributedStringExtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedStringExtn.swift; sourceTree = "<group>"; };
 		B95877902BF9B5A6008E0330 /* ArrayExtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayExtn.swift; sourceTree = "<group>"; };
+		B96D1D2E2C95532C004087F3 /* CategoryListItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListItemCell.swift; sourceTree = "<group>"; };
+		B96D1D302C9553C0004087F3 /* NRLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRLabel.swift; sourceTree = "<group>"; };
+		B96D1D322C95566A004087F3 /* CommonStyleExtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonStyleExtn.swift; sourceTree = "<group>"; };
 		B97AF4FE2BFA45C700C1E7AD /* UILabelExtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelExtn.swift; sourceTree = "<group>"; };
+		B987BA192C96FF7B00B4671B /* ArticleDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailsViewController.swift; sourceTree = "<group>"; };
 		B99A58092BFAF04B008D0C48 /* NRDividerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRDividerView.swift; sourceTree = "<group>"; };
 		B99A580B2BFB060E008D0C48 /* UIViewSizeExtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewSizeExtn.swift; sourceTree = "<group>"; };
 		B99B69672BF9D3D600855064 /* UIImageViewExtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtn.swift; sourceTree = "<group>"; };
@@ -197,6 +211,14 @@
 			path = NewsReaderTests;
 			sourceTree = "<group>";
 		};
+		B9143D0B2C947F0B00677B10 /* CategoryList */ = {
+			isa = PBXGroup;
+			children = (
+				B96D1D2E2C95532C004087F3 /* CategoryListItemCell.swift */,
+			);
+			path = CategoryList;
+			sourceTree = "<group>";
+		};
 		B94FC9EC2BF8A1310052D2D1 /* Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +270,9 @@
 		B94FCA0F2BF8BA760052D2D1 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				B987BA182C96FF3F00B4671B /* ArticleDetails */,
+				B9143D0E2C94865B00677B10 /* NewsReaderHomeViewController.swift */,
+				B9143D122C948CF900677B10 /* NewsReaderHomeViewModel.swift */,
 				B94FCA172BF8DABD0052D2D1 /* Common */,
 				B94FCA112BF8BAC50052D2D1 /* ArticleList */,
 			);
@@ -257,6 +282,7 @@
 		B94FCA112BF8BAC50052D2D1 /* ArticleList */ = {
 			isa = PBXGroup;
 			children = (
+				B9143D0B2C947F0B00677B10 /* CategoryList */,
 				B94FCA1F2BF8ECE30052D2D1 /* DisplayData */,
 				B947E4FA2BFC848A00454D71 /* ArticleListCell.swift */,
 				B94FCA132BF8D83F0052D2D1 /* ArticleListViewModel.swift */,
@@ -283,6 +309,7 @@
 				B94FCA192BF8DB210052D2D1 /* NRArticleShortView.swift */,
 				B9A7D0BC2BFB0E75002A579A /* NRErrorView.swift */,
 				B9A7D0C52BFB913D002A579A /* NRButton.swift */,
+				B96D1D302C9553C0004087F3 /* NRLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -320,8 +347,18 @@
 				B9A7D0BE2BFB10C9002A579A /* UINavigationBarExtn.swift */,
 				B9A7D0C02BFB4186002A579A /* CALayerBorderExtn.swift */,
 				B9143D092C94500700677B10 /* SizeExtn.swift */,
+				B9143D102C948AB500677B10 /* UIViewControllerContainmentExtn.swift */,
+				B96D1D322C95566A004087F3 /* CommonStyleExtn.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		B987BA182C96FF3F00B4671B /* ArticleDetails */ = {
+			isa = PBXGroup;
+			children = (
+				B987BA192C96FF7B00B4671B /* ArticleDetailsViewController.swift */,
+			);
+			path = ArticleDetails;
 			sourceTree = "<group>";
 		};
 		B9A7D0C22BFB81F6002A579A /* ViewController */ = {
@@ -526,14 +563,18 @@
 				B97AF4FF2BFA45C700C1E7AD /* UILabelExtn.swift in Sources */,
 				B95877892BF984D2008E0330 /* UICollectionViewExtn.swift in Sources */,
 				B958778D2BF99502008E0330 /* UIViewControllerExtn.swift in Sources */,
+				B9143D132C948CF900677B10 /* NewsReaderHomeViewModel.swift in Sources */,
 				5B259CCA1D6630E0001D755F /* AppDelegate.swift in Sources */,
 				B9C88CF02C8FE30A00D3EC18 /* TopHeadlinesModels.swift in Sources */,
+				B96D1D312C9553C0004087F3 /* NRLabel.swift in Sources */,
 				B9A7D0C42BFB821F002A579A /* NRBottomBoxViewController.swift in Sources */,
 				B9C88CF22C9054DC00D3EC18 /* NRPageCollectionViewController.swift in Sources */,
 				B947E4FD2BFCF8F100454D71 /* NRRefreshCollectionViewController.swift in Sources */,
 				B99A580A2BFAF04B008D0C48 /* NRDividerView.swift in Sources */,
 				B958778F2BF9AF27008E0330 /* NSAttributedStringExtn.swift in Sources */,
+				B9143D112C948AB500677B10 /* UIViewControllerContainmentExtn.swift in Sources */,
 				B94FCA1E2BF8E66D0052D2D1 /* ArticleDisplayModel.swift in Sources */,
+				B987BA1A2C96FF7B00B4671B /* ArticleDetailsViewController.swift in Sources */,
 				B94FCA0E2BF8AC0F0052D2D1 /* CommonModels.swift in Sources */,
 				B9A7D0BF2BFB10C9002A579A /* UINavigationBarExtn.swift in Sources */,
 				B94FC9F42BF8A1EB0052D2D1 /* Configurator.swift in Sources */,
@@ -542,13 +583,16 @@
 				B9A7D0BD2BFB0E75002A579A /* NRErrorView.swift in Sources */,
 				B99B69682BF9D3D600855064 /* UIImageViewExtn.swift in Sources */,
 				B94FC9FE2BF8A5120052D2D1 /* JSONParser.swift in Sources */,
+				B96D1D2F2C95532C004087F3 /* CategoryListItemCell.swift in Sources */,
 				B94313C52BF9E1B300F4EE62 /* NRSpacerView.swift in Sources */,
 				B9A7D0C12BFB4186002A579A /* CALayerBorderExtn.swift in Sources */,
 				B94FC9FC2BF8A5120052D2D1 /* NetworkManager.swift in Sources */,
+				B9143D0F2C94865B00677B10 /* NewsReaderHomeViewController.swift in Sources */,
 				B9A7D0C62BFB913D002A579A /* NRButton.swift in Sources */,
 				96D6F5FD280F47B0009338BF /* UIColorExtn.swift in Sources */,
 				B947E4FB2BFC848A00454D71 /* ArticleListCell.swift in Sources */,
 				B94FC9FB2BF8A5120052D2D1 /* URLCacheManager.swift in Sources */,
+				B96D1D332C95566A004087F3 /* CommonStyleExtn.swift in Sources */,
 				B94FC9FD2BF8A5120052D2D1 /* EndpointService.swift in Sources */,
 				B94FCA1A2BF8DB210052D2D1 /* NRArticleShortView.swift in Sources */,
 				B94FCA142BF8D83F0052D2D1 /* ArticleListViewModel.swift in Sources */,

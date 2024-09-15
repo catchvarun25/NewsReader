@@ -13,6 +13,7 @@ enum ArticleListFetchStatus {
     case loading
     case success(data: [ArticleDisplayModel])
     case failure(error: APIError)
+    case reset
     case none
 }
 
@@ -21,6 +22,7 @@ protocol ArticleListViewModelProtocol {
     
     init(service: TopHeadlinesServiceProtocol)
     func fetchArticleList(_ page: Int)
+    func onChangeCategory(_ type: ArticleCategoryTypes)
 }
 
 final class ArticleListViewModel: ArticleListViewModelProtocol {
@@ -28,6 +30,7 @@ final class ArticleListViewModel: ArticleListViewModelProtocol {
     //MARK: Private Accessors -
     private let service: TopHeadlinesServiceProtocol
     private var disposeBag = Set<AnyCancellable>()
+    private var selectedCategory: ArticleCategoryTypes = .entertainment
 
     @Published private var fetchStatus: ArticleListFetchStatus = .none
 
@@ -40,8 +43,10 @@ final class ArticleListViewModel: ArticleListViewModelProtocol {
     
     //MARK: Public Methods -
     func fetchArticleList(_ page: Int) {
-        fetchStatus = .loading
-        service.asyncGetTopHeadLines(page)
+        if page == 1 {
+            fetchStatus = .loading
+        }
+        service.asyncGetTopHeadLinesFor(selectedCategory, pageNumber: page)
             .sink(receiveCompletion: { [weak self] completion in
                 switch completion {
                 case .finished:
@@ -52,9 +57,14 @@ final class ArticleListViewModel: ArticleListViewModelProtocol {
                 }
             }, receiveValue: { [weak self] data in
                 guard let responseData = data, let articles = responseData.articles else { return }
-                self?.fetchStatus = .success(data: articles.map{ ArticleDisplayModel($0) })
+                self?.fetchStatus = .success(data: articles.compactMap { ArticleDisplayModel($0) })
             })
             .store(in: &disposeBag)
+    }
+    
+    func onChangeCategory(_ type: ArticleCategoryTypes) {
+        selectedCategory = type
+        fetchStatus = .reset
     }
     
 }

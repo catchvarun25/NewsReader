@@ -47,19 +47,19 @@ extension NetworkManager: Fetchable {
         request.httpMethod = "GET"
         
         // Publisher for cached response
-//        let cachedPublisher = Future<T?, APIError> { [weak self] promise in
-//            guard let self = self else { return }
-//            do {
-//                if let cachedResponse = self.cacheManager.cachedResponse(for: request) {
-//                    promise(.success(try JSONParser.decode(cachedResponse.data)))
-//                } else {
-//                    promise(.success(nil))
-//                }
-//            }
-//            catch {
-//                promise(.success(nil))
-//            }
-//        }
+        let cachedPublisher = Future<T?, APIError> { [weak self] promise in
+            guard let self = self else { return }
+            do {
+                if let cachedResponse = self.cacheManager.cachedResponse(for: request) {
+                    promise(.success(try JSONParser.decode(cachedResponse.data)))
+                } else {
+                    promise(.success(nil))
+                }
+            }
+            catch {
+                promise(.success(nil))
+            }
+        }
         
         // Publisher for fresh response
         let freshDataPublisher = URLSession.shared.dataTaskPublisher(for: request)
@@ -74,7 +74,7 @@ extension NetworkManager: Fetchable {
             .eraseToAnyPublisher()
         
         return freshDataPublisher.eraseToAnyPublisher()
-//        return Publishers.Merge(cachedPublisher, freshDataPublisher)
+//        return Publishers.(cachedPublisher, freshDataPublisher)
 //            .eraseToAnyPublisher()
         
     }

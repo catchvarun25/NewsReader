@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TopHeadlinesCategory: String {
+enum ArticleCategoryTypes: String, CaseIterable {
     case all
     case business
     case entertainment

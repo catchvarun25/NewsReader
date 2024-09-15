@@ -39,12 +39,6 @@ final class ArticleListViewController: NRPageCollectionViewController {
         startLoading()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.title = "List"
-        navigationController?.setNavigationBar(type: .whiteWithBottomBorder)
-    }
-    
     override func setupCollection() {
         super.setupCollection()
         self.collectionView.register(cellType: ArticleListCell.self)
@@ -53,7 +47,7 @@ final class ArticleListViewController: NRPageCollectionViewController {
     //MARK: Private Methods -
     private func bindPublishers() {
         viewModel.fetchStatusPublisher
-            .receive(on: RunLoop.main, options: nil)
+            .receive(on: DispatchQueue.main, options: nil)
             .sink { [weak self] fetchStatus in
                 switch fetchStatus {
                 case .loading:
@@ -69,6 +63,10 @@ final class ArticleListViewController: NRPageCollectionViewController {
                         self?.listData = []
                         self?.reloadContent()
                     })
+                case .reset:
+                    self?.listData = []
+                    self?.collectionView.reloadData()
+                    self?.reloadContent()
                 case .none:
                     debugPrint("")
                 }
@@ -94,6 +92,12 @@ extension ArticleListViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let cellData = listData[safe: indexPath.row],
+           let articleURL = cellData.articleURL,
+           let articleSource = cellData.source {
+            let detailViewController = ArticleDetailsViewController(articleURL: articleURL, source: articleSource)
+            self.navigationController?.pushViewController(detailViewController, animated: true)
+        }
     }
 }
 
