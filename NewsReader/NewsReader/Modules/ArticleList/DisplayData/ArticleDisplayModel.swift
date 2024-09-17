@@ -8,14 +8,16 @@
 
 import Foundation
 
-struct ArticleDisplayModel {
-    let title: String?
+struct ArticleDisplayModel: Codable, Identifiable {
+    let id: String
+    let title: String
     let author: String?
     let description: String?
     let source: String?
-    let articleURL: String?
-    let imageURL: String?
+    let articleURL: String
+    let imageURL: String
     let publishedDate: String?
+    var isBookmarked: Bool = false
     
     var footerDisplay: NSAttributedString {
         get {
@@ -30,6 +32,7 @@ struct ArticleDisplayModel {
         guard let title = response.title,
               let imageURL = response.urlToImage,
               let articleURL = response.url else { return nil }
+        self.id = articleURL
         self.title = title
         self.articleURL = articleURL
         self.imageURL = imageURL

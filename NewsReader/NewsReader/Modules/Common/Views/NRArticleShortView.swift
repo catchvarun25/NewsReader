@@ -10,7 +10,6 @@ import UIKit
 import SnapKit
 
 final class NRArticleShortView: UIView {
-    
     //MARK: Private Accessors -
     private let mainStack: UIStackView = .horizontal.with(spacing: 16.0)
     private let articleDetailStack: UIStackView = .vertical.with(alignment: .leading)
@@ -44,11 +43,11 @@ final class NRArticleShortView: UIView {
         addSubview(mainStack)
         mainStack <<< articleImage
                   <<< articleDetailStack
+        
         articleDetailStack <<< titlelabel
                            <<< 10.0
                            <<< footerLabel
                            <<< NRSpacerView()
-        
         setupConstraints()
     }
     
@@ -56,18 +55,16 @@ final class NRArticleShortView: UIView {
         mainStack.snp.makeConstraints { make in
             make.directionalEdges.equalToSuperview()
         }
-
         articleImage.snp.makeConstraints { make in
             make.width.equalTo(Constants.kImageSize)
         }
     }
-    
+        
     func configureView(data: ArticleDisplayModel) {
-        guard let title = data.title else { return }
         // Article Image
         articleImage.sd_setThumbnailImage(with: data.imageURL, placeholder: nil, size: Constants.kImageSize.size)
         // Description Label
-        titlelabel.setText(title, withLineHeight: 19.0)
+        titlelabel.setText(data.title, withLineHeight: 19.0)
         
         // Source Label
         footerLabel.attributedText = data.footerDisplay

@@ -15,6 +15,8 @@
 		9636D41A27FF77E700FE8106 /* ProductViewerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9636D41927FF77E700FE8106 /* ProductViewerTests.swift */; };
 		96D6F5FD280F47B0009338BF /* UIColorExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6F5FB280F47B0009338BF /* UIColorExtn.swift */; };
 		96D6F5FE280F47B0009338BF /* UIFontExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96D6F5FC280F47B0009338BF /* UIFontExtn.swift */; };
+		B908CC562C99202100D0AD2D /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B908CC552C99202100D0AD2D /* BookmarkViewModel.swift */; };
+		B908CC582C99635800D0AD2D /* ArticleDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B908CC572C99635800D0AD2D /* ArticleDetailsViewModel.swift */; };
 		B9143D0A2C94500700677B10 /* SizeExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9143D092C94500700677B10 /* SizeExtn.swift */; };
 		B9143D0F2C94865B00677B10 /* NewsReaderHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9143D0E2C94865B00677B10 /* NewsReaderHomeViewController.swift */; };
 		B9143D112C948AB500677B10 /* UIViewControllerContainmentExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9143D102C948AB500677B10 /* UIViewControllerContainmentExtn.swift */; };
@@ -55,6 +57,8 @@
 		B9A7D0C12BFB4186002A579A /* CALayerBorderExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A7D0C02BFB4186002A579A /* CALayerBorderExtn.swift */; };
 		B9A7D0C42BFB821F002A579A /* NRBottomBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A7D0C32BFB821F002A579A /* NRBottomBoxViewController.swift */; };
 		B9A7D0C62BFB913D002A579A /* NRButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9A7D0C52BFB913D002A579A /* NRButton.swift */; };
+		B9B166852C97DB17001C7788 /* BookmarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B166842C97DB17001C7788 /* BookmarkViewController.swift */; };
+		B9B166872C97DF8A001C7788 /* BookmarkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9B166862C97DF8A001C7788 /* BookmarkManager.swift */; };
 		B9C88CF02C8FE30A00D3EC18 /* TopHeadlinesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C88CEF2C8FE30A00D3EC18 /* TopHeadlinesModels.swift */; };
 		B9C88CF22C9054DC00D3EC18 /* NRPageCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C88CF12C9054DC00D3EC18 /* NRPageCollectionViewController.swift */; };
 /* End PBXBuildFile section */
@@ -88,6 +92,8 @@
 		A53F84001449D4ECE14405CB /* Pods-ProductViewer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductViewer.release.xcconfig"; path = "Target Support Files/Pods-ProductViewer/Pods-ProductViewer.release.xcconfig"; sourceTree = "<group>"; };
 		A6D516889A064DCA86F4BF4A /* Pods-ProductViewerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductViewerTests.debug.xcconfig"; path = "Target Support Files/Pods-ProductViewerTests/Pods-ProductViewerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7887A2CE34816CBAC5B7251 /* Pods-ProductViewer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductViewer.debug.xcconfig"; path = "Target Support Files/Pods-ProductViewer/Pods-ProductViewer.debug.xcconfig"; sourceTree = "<group>"; };
+		B908CC552C99202100D0AD2D /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
+		B908CC572C99635800D0AD2D /* ArticleDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailsViewModel.swift; sourceTree = "<group>"; };
 		B9143D092C94500700677B10 /* SizeExtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeExtn.swift; sourceTree = "<group>"; };
 		B9143D0E2C94865B00677B10 /* NewsReaderHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsReaderHomeViewController.swift; sourceTree = "<group>"; };
 		B9143D102C948AB500677B10 /* UIViewControllerContainmentExtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerContainmentExtn.swift; sourceTree = "<group>"; };
@@ -128,6 +134,8 @@
 		B9A7D0C02BFB4186002A579A /* CALayerBorderExtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerBorderExtn.swift; sourceTree = "<group>"; };
 		B9A7D0C32BFB821F002A579A /* NRBottomBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRBottomBoxViewController.swift; sourceTree = "<group>"; };
 		B9A7D0C52BFB913D002A579A /* NRButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRButton.swift; sourceTree = "<group>"; };
+		B9B166842C97DB17001C7788 /* BookmarkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewController.swift; sourceTree = "<group>"; };
+		B9B166862C97DF8A001C7788 /* BookmarkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkManager.swift; sourceTree = "<group>"; };
 		B9C88CEF2C8FE30A00D3EC18 /* TopHeadlinesModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopHeadlinesModels.swift; sourceTree = "<group>"; };
 		B9C88CF12C9054DC00D3EC18 /* NRPageCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRPageCollectionViewController.swift; sourceTree = "<group>"; };
 		E65020AA1AFCB4F139342EE9 /* Pods-ProductViewerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProductViewerTests.release.xcconfig"; path = "Target Support Files/Pods-ProductViewerTests/Pods-ProductViewerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -270,11 +278,12 @@
 		B94FCA0F2BF8BA760052D2D1 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				B987BA182C96FF3F00B4671B /* ArticleDetails */,
+				B94FCA172BF8DABD0052D2D1 /* Common */,
 				B9143D0E2C94865B00677B10 /* NewsReaderHomeViewController.swift */,
 				B9143D122C948CF900677B10 /* NewsReaderHomeViewModel.swift */,
-				B94FCA172BF8DABD0052D2D1 /* Common */,
 				B94FCA112BF8BAC50052D2D1 /* ArticleList */,
+				B987BA182C96FF3F00B4671B /* ArticleDetails */,
+				B9B166832C97DAED001C7788 /* Bookmark */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -356,6 +365,7 @@
 		B987BA182C96FF3F00B4671B /* ArticleDetails */ = {
 			isa = PBXGroup;
 			children = (
+				B908CC572C99635800D0AD2D /* ArticleDetailsViewModel.swift */,
 				B987BA192C96FF7B00B4671B /* ArticleDetailsViewController.swift */,
 			);
 			path = ArticleDetails;
@@ -369,6 +379,16 @@
 				B947E4FC2BFCF8F100454D71 /* NRRefreshCollectionViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		B9B166832C97DAED001C7788 /* Bookmark */ = {
+			isa = PBXGroup;
+			children = (
+				B9B166862C97DF8A001C7788 /* BookmarkManager.swift */,
+				B9B166842C97DB17001C7788 /* BookmarkViewController.swift */,
+				B908CC552C99202100D0AD2D /* BookmarkViewModel.swift */,
+			);
+			path = Bookmark;
 			sourceTree = "<group>";
 		};
 		E94CF280F2A275B52D037CF8 /* Frameworks */ = {
@@ -558,6 +578,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9B166852C97DB17001C7788 /* BookmarkViewController.swift in Sources */,
 				B95877872BF9818F008E0330 /* ScreenExtn.swift in Sources */,
 				B94FCA062BF8A9440052D2D1 /* TopHeadlinesService.swift in Sources */,
 				B97AF4FF2BFA45C700C1E7AD /* UILabelExtn.swift in Sources */,
@@ -578,6 +599,7 @@
 				B94FCA0E2BF8AC0F0052D2D1 /* CommonModels.swift in Sources */,
 				B9A7D0BF2BFB10C9002A579A /* UINavigationBarExtn.swift in Sources */,
 				B94FC9F42BF8A1EB0052D2D1 /* Configurator.swift in Sources */,
+				B908CC562C99202100D0AD2D /* BookmarkViewModel.swift in Sources */,
 				B99A580C2BFB060E008D0C48 /* UIViewSizeExtn.swift in Sources */,
 				B958778B2BF98870008E0330 /* UIStackViewExtn.swift in Sources */,
 				B9A7D0BD2BFB0E75002A579A /* NRErrorView.swift in Sources */,
@@ -587,8 +609,10 @@
 				B94313C52BF9E1B300F4EE62 /* NRSpacerView.swift in Sources */,
 				B9A7D0C12BFB4186002A579A /* CALayerBorderExtn.swift in Sources */,
 				B94FC9FC2BF8A5120052D2D1 /* NetworkManager.swift in Sources */,
+				B908CC582C99635800D0AD2D /* ArticleDetailsViewModel.swift in Sources */,
 				B9143D0F2C94865B00677B10 /* NewsReaderHomeViewController.swift in Sources */,
 				B9A7D0C62BFB913D002A579A /* NRButton.swift in Sources */,
+				B9B166872C97DF8A001C7788 /* BookmarkManager.swift in Sources */,
 				96D6F5FD280F47B0009338BF /* UIColorExtn.swift in Sources */,
 				B947E4FB2BFC848A00454D71 /* ArticleListCell.swift in Sources */,
 				B94FC9FB2BF8A5120052D2D1 /* URLCacheManager.swift in Sources */,

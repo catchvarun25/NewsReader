@@ -9,7 +9,6 @@
 import Foundation
 
 enum ArticleCategoryTypes: String, CaseIterable {
-    case all
     case business
     case entertainment
     case general

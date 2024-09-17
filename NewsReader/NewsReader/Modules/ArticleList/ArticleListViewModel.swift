@@ -16,35 +16,42 @@ enum ArticleListFetchStatus {
     case reset
     case none
 }
-
-protocol ArticleListViewModelProtocol {
+protocol ArticleListViewModelProtocol: NewsReaderCategoryChangeableProtocol {
     var fetchStatusPublisher: Published<ArticleListFetchStatus>.Publisher { get }
     
-    init(service: TopHeadlinesServiceProtocol)
+    init(selectedCategory: ArticleCategoryTypes,
+         service: TopHeadlinesServiceProtocol,
+         bookmarkManager: BookmarkManagerProtocol)
     func fetchArticleList(_ page: Int)
-    func onChangeCategory(_ type: ArticleCategoryTypes)
 }
 
 final class ArticleListViewModel: ArticleListViewModelProtocol {
         
     //MARK: Private Accessors -
     private let service: TopHeadlinesServiceProtocol
+    private let bookmarkManager: BookmarkManagerProtocol
     private var disposeBag = Set<AnyCancellable>()
-    private var selectedCategory: ArticleCategoryTypes = .entertainment
+    private var selectedCategory: ArticleCategoryTypes = AppConstants.kDefaultSelectedCategory
+    private var listData = [ArticleDisplayModel]()
 
     @Published private var fetchStatus: ArticleListFetchStatus = .none
 
     //MARK: Public Accessors -
     var fetchStatusPublisher: Published<ArticleListFetchStatus>.Publisher { $fetchStatus }
     
-    init(service: TopHeadlinesServiceProtocol = TopHeadlinesService()) {
+    init(selectedCategory: ArticleCategoryTypes = AppConstants.kDefaultSelectedCategory,
+         service: TopHeadlinesServiceProtocol = TopHeadlinesService(),
+         bookmarkManager: BookmarkManagerProtocol = BookmarkManager.shared) {
         self.service = service
+        self.bookmarkManager = bookmarkManager
+        self.selectedCategory = selectedCategory
     }
     
     //MARK: Public Methods -
     func fetchArticleList(_ page: Int) {
         if page == 1 {
             fetchStatus = .loading
+            self.listData = []
         }
         service.asyncGetTopHeadLinesFor(selectedCategory, pageNumber: page)
             .sink(receiveCompletion: { [weak self] completion in
@@ -56,15 +63,25 @@ final class ArticleListViewModel: ArticleListViewModelProtocol {
                     self?.fetchStatus = .failure(error: .map(error))
                 }
             }, receiveValue: { [weak self] data in
-                guard let responseData = data, let articles = responseData.articles else { return }
-                self?.fetchStatus = .success(data: articles.compactMap { ArticleDisplayModel($0) })
+                guard let self = self, let responseData = data, let articles = responseData.articles else { return }
+                let bookMarkedIds = self.bookmarkManager.getBookMarkedIds()
+                let articleDisplayModels = articles.compactMap { (respModel) in
+                    if var displayModel = ArticleDisplayModel(respModel) {
+                        displayModel.isBookmarked = bookMarkedIds.contains(displayModel.id)
+                        return displayModel
+                    }
+                    return nil
+                }
+                self.listData = self.listData + articleDisplayModels
+                self.fetchStatus = .success(data: self.listData)
             })
             .store(in: &disposeBag)
-    }
-    
-    func onChangeCategory(_ type: ArticleCategoryTypes) {
+    }    
+}
+
+extension ArticleListViewModel {
+    func onChangeSelectedCategory(_ type: ArticleCategoryTypes) {
         selectedCategory = type
         fetchStatus = .reset
     }
-    
 }

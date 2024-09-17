@@ -18,4 +18,6 @@ enum AppConstants {
     enum Error {
         static let kErrorMessage: String = "Failed to Load Page"
     }
+    
+    static let kDefaultSelectedCategory: ArticleCategoryTypes = .general
 }

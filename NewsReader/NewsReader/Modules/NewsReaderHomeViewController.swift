@@ -31,6 +31,15 @@ class NewsReaderHomeViewController: UIViewController {
         return collectionView
     }()
     
+    private lazy var bookmarkButton: UIBarButtonItem = {
+        let barItem = UIBarButtonItem(image: UIImage(systemName: "bookmark"),
+                                      style: .plain,
+                                      target: self,
+                                      action: #selector(bookmarkTapped))
+        barItem.tintColor = .textBlackNR
+        return barItem
+    }()
+    
     private var categoryListData: [CategoryTypeDisplayModel] = []
         
     init(viewModel: NewsReaderHomeViewModelProtocol = NewsReaderHomeViewModel()) {
@@ -54,8 +63,11 @@ class NewsReaderHomeViewController: UIViewController {
         navigationController?.setNavigationBar(type: .whiteWithBottomBorder)
     }
     
+    
     //MARK: Private Methods
     private func setupUI() {
+        navigationItem.rightBarButtonItem = bookmarkButton
+
         //CategoryList
         self.view.addSubview(categoryListView)
         categoryListView.snp.makeConstraints { make in
@@ -80,6 +92,12 @@ class NewsReaderHomeViewController: UIViewController {
                 self?.categoryListData = categoriesData
                 self?.categoryListView.reloadData()
             }.store(in: &disposeBag)
+    }
+    
+    @objc 
+    private func bookmarkTapped() {
+        let bookmarkController = BookmarkViewController()
+        self.navigationController?.pushViewController(bookmarkController, animated: true)
     }
 }
 

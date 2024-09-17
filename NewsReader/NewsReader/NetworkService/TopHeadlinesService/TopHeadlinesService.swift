@@ -15,7 +15,7 @@ protocol TopHeadlinesServiceProtocol {
 
 extension TopHeadlinesServiceProtocol {
     func asyncGetTopHeadLines(_ pageNumber: Int) -> AnyPublisher<ArticleListResp?, APIError> {
-        asyncGetTopHeadLinesFor(.entertainment, pageNumber: pageNumber)
+        asyncGetTopHeadLinesFor(AppConstants.kDefaultSelectedCategory, pageNumber: pageNumber)
     }
 }
 

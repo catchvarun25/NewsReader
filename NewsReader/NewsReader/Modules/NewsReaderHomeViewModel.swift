@@ -47,7 +47,7 @@ class NewsReaderHomeViewModel: NewsReaderHomeViewModelProtocol  {
         var tempCategories: [CategoryTypeDisplayModel] = []
         for categoryType in ArticleCategoryTypes.allCases {
             var categoryDisplayModel = CategoryTypeDisplayModel(name: categoryType.rawValue, type: categoryType)
-            categoryDisplayModel.isSelected = categoryType == .entertainment
+            categoryDisplayModel.isSelected = categoryType == AppConstants.kDefaultSelectedCategory
             tempCategories.append(categoryDisplayModel)
         }
         categoriesDataPublisher.append(contentsOf: tempCategories)
@@ -62,6 +62,6 @@ extension NewsReaderHomeViewModel : NewsReaderCategoryChangeableProtocol{
             updatedModel.isSelected = updatedModel.type == type
             return updatedModel
         }
-        articleListViewModel.onChangeCategory(type)
+        articleListViewModel.onChangeSelectedCategory(type)
     }
 }

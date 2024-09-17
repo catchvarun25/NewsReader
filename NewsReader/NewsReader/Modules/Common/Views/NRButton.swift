@@ -9,12 +9,20 @@
 import UIKit
 
 class NRButton: UIButton {
-
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
     init(backgroundColor: UIColor, titleColor: UIColor) {
         super.init(frame: .zero)
         self.backgroundColor = backgroundColor
         setTitleColor(titleColor, for: .normal)
         setupUI()
+    }
+    
+    init(iconName: String, backgroundColor: UIColor) {
+        super.init(frame: .zero)
+        self.backgroundColor = backgroundColor
+        self.setImage(UIImage(systemName: iconName), for: .normal)
     }
 
     required init?(coder: NSCoder) {
@@ -36,6 +44,8 @@ class NRButton: UIButton {
         self.titleLabel?.font = .emphasisBold
     }
 }
+
+
 
 extension NRButton {
     private enum Constants {

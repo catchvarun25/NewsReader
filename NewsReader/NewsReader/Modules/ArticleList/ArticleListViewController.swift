@@ -55,7 +55,7 @@ final class ArticleListViewController: NRPageCollectionViewController {
                     self?.showLoader()
                 case .success(let listData):
                     self?.hideLoader()
-                    self?.listData = (self?.listData ?? []) + listData
+                    self?.listData = listData
                     self?.collectionView.reloadData()
                 case .failure(let error):
                     self?.hideLoader()
@@ -85,23 +85,23 @@ extension ArticleListViewController {
     override func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: ArticleListCell.self, at: indexPath)
-        if let cellData = listData[safe: indexPath.row], let _ = cellData.title {
-            cell.configureView(data: cellData, showDivider: indexPath.row != listData.count - 1)
+        if let cellData = listData[safe: indexPath.row] {
+            let showDivider = indexPath.row != listData.count - 1
+            cell.configureView(data: cellData, showDivider: showDivider)
         }
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cellData = listData[safe: indexPath.row],
-           let articleURL = cellData.articleURL,
-           let articleSource = cellData.source {
-            let detailViewController = ArticleDetailsViewController(articleURL: articleURL, source: articleSource)
+        if let cellData = listData[safe: indexPath.row] {
+            let detailViewController = ArticleDetailsViewController(articleModel: cellData)
             self.navigationController?.pushViewController(detailViewController, animated: true)
         }
     }
 }
-
-private enum Constants {
-    static let kCellHeight: CGFloat = 175.0
+extension ArticleListViewController {
+    private enum Constants {
+        static let kCellHeight: CGFloat = 175.0
+    }
 }
 
