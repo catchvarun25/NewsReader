@@ -8,12 +8,14 @@
 
 import UIKit
 import SnapKit
+import Combine
 
 class BookmarkViewController: UIViewController {
     //MARK: Private Accessor
     private let viewModel: BookmarkViewModelProtocol
-    private var articleListData: [ArticleDisplayModel] = []
-    
+    private var bookmarkListData: [ArticleDisplayModel] = []
+    private var disposeBag = Set<AnyCancellable>()
+
     private let verticalLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: UIScreen.screenWidth, height: Constants.kCellHeight)
@@ -43,7 +45,8 @@ class BookmarkViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        articleListData = viewModel.getBookmarkArticles()
+        bindPublisher()
+        viewModel.getBookMarkList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -63,25 +66,44 @@ class BookmarkViewController: UIViewController {
             make.bottom.equalToSuperview()
         }
     }
+    
+    private func bindPublisher() {
+        viewModel.bookmarkListDataPublisher
+            .receive(on: RunLoop.main)
+            .sink { [weak self] articleList in
+                guard let self = self else { return }
+                if articleList.isEmpty {
+                    showNoBookmarkMessage()
+                } else {
+                    bookmarkListData = articleList
+                    articleListView.reloadData()
+                }
+            }
+            .store(in: &disposeBag)
+    }
+    
+    private func showNoBookmarkMessage() {
+        self.showError(message: "No article bookmarked!")
+    }
 }
 
 extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return articleListData.count
+        return bookmarkListData.count
     }
         
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: ArticleListCell.self, at: indexPath)
-        if let cellData = articleListData[safe: indexPath.row] {
-            cell.configureView(data: cellData, showDivider: indexPath.row != articleListData.count - 1)
+        if let cellData = bookmarkListData[safe: indexPath.row] {
+            cell.configureView(data: cellData, showDivider: indexPath.row != bookmarkListData.count - 1)
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cellData = articleListData[safe: indexPath.row] {
+        if let cellData = bookmarkListData[safe: indexPath.row] {
             let detailViewController = ArticleDetailsViewController(articleModel: cellData)
             self.navigationController?.pushViewController(detailViewController, animated: true)
         }

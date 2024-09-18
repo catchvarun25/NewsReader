@@ -26,10 +26,11 @@ class NRErrorView: UIView {
         return button
     }()
     
-    var tryAgainAction: (() -> Void)?
+    let tryAgainAction: (() -> Void)?
 
-    init(message: String) {
+    init(message: String, handler: (() -> Void)? = nil) {
         self.message = message
+        tryAgainAction = handler
         super.init(frame: .zero)
         setupUI()
     }
@@ -41,18 +42,22 @@ class NRErrorView: UIView {
     private func setupUI() {
         backgroundColor = .primaryBackgroundNR
 
+        //Error Message Label
         addSubview(messageLabel)
-        addSubview(tryAgainButton)
-        messageLabel.text = message
-        setupConstraints()
-    }
-    
-    private func setupConstraints() {
         messageLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.directionalHorizontalEdges.equalToSuperview().inset(Constants.kContentInset)
         }
-
+        messageLabel.text = message
+        
+        //Try Again Handler
+        if tryAgainAction != nil {
+            updateHandler()
+        }
+    }
+    
+    private func updateHandler() {
+        addSubview(tryAgainButton)
         tryAgainButton.snp.makeConstraints { make in
             make.bottom.equalTo(safeAreaLayoutGuide.snp.bottom).inset(20.0)
             make.directionalHorizontalEdges.equalToSuperview().inset(Constants.kContentInset)

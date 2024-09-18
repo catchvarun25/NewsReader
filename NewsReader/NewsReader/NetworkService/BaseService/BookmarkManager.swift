@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Combine
 
 protocol BookmarkManagerProtocol {
     func getBookMarkedIds() -> Set<String>

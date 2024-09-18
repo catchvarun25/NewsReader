@@ -16,6 +16,12 @@ protocol Fetchable {
 
 class NetworkManager {
     private let cacheManager: URLCacheManagerProtocol
+    private lazy var session: URLSession = {
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = AppConstants.Network.kRequestTimeOut
+        return URLSession(configuration: configuration)
+    }()
+    
     init(cacheManager: URLCacheManagerProtocol = URLCacheManager.shared) {
         self.cacheManager = cacheManager
     }
@@ -62,7 +68,7 @@ extension NetworkManager: Fetchable {
         }
         
         // Publisher for fresh response
-        let freshDataPublisher = URLSession.shared.dataTaskPublisher(for: request)
+        let freshDataPublisher = session.dataTaskPublisher(for: request)
             .tryMap { [weak self] data, response -> T? in
                 // Cache the new response
                 if endpoint.cacheSupport {

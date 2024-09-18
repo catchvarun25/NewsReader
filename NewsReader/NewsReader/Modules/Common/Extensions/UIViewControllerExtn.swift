@@ -63,11 +63,11 @@ extension UIViewController {
     
     // MARK: Error Screen Methods -
     
-    func showError(message: String?,
+    func showError(message: String? = nil,
                    handler: (() -> Void)? = nil) {
         if errorView == nil {
-            let erroView = NRErrorView(message: message ?? AppConstants.Error.kErrorMessage)
-            erroView.tryAgainAction = handler
+            let erroView = NRErrorView(message: message ?? AppConstants.Error.kErrorMessage,
+                                       handler: handler)
             errorView = erroView
             view.addSubview(erroView)
             erroView.snp.makeConstraints { make in

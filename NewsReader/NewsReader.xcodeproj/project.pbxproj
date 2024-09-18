@@ -231,6 +231,15 @@
 			path = CategoryList;
 			sourceTree = "<group>";
 		};
+		B93806762C9B24E90007E7C3 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B9143D122C948CF900677B10 /* NewsReaderHomeViewModel.swift */,
+				B9143D0E2C94865B00677B10 /* NewsReaderHomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		B94FC9EC2BF8A1310052D2D1 /* Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,6 +263,7 @@
 		B94FC9F62BF8A4F30052D2D1 /* BaseService */ = {
 			isa = PBXGroup;
 			children = (
+				B9B166862C97DF8A001C7788 /* BookmarkManager.swift */,
 				B94FC9F92BF8A5120052D2D1 /* EndpointService.swift */,
 				B94FC9FA2BF8A5120052D2D1 /* JSONParser.swift */,
 				B94FC9F82BF8A5120052D2D1 /* NetworkManager.swift */,
@@ -283,8 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				B94FCA172BF8DABD0052D2D1 /* Common */,
-				B9143D0E2C94865B00677B10 /* NewsReaderHomeViewController.swift */,
-				B9143D122C948CF900677B10 /* NewsReaderHomeViewModel.swift */,
+				B93806762C9B24E90007E7C3 /* Home */,
 				B94FCA112BF8BAC50052D2D1 /* ArticleList */,
 				B987BA182C96FF3F00B4671B /* ArticleDetails */,
 				B9B166832C97DAED001C7788 /* Bookmark */,
@@ -295,8 +304,8 @@
 		B94FCA112BF8BAC50052D2D1 /* ArticleList */ = {
 			isa = PBXGroup;
 			children = (
-				B9143D0B2C947F0B00677B10 /* CategoryList */,
 				B94FCA1F2BF8ECE30052D2D1 /* DisplayData */,
+				B9143D0B2C947F0B00677B10 /* CategoryList */,
 				B947E4FA2BFC848A00454D71 /* ArticleListCell.swift */,
 				B94FCA132BF8D83F0052D2D1 /* ArticleListViewModel.swift */,
 				B94CDA4F2C932CEC0021EF86 /* ArticleListViewController.swift */,
@@ -390,9 +399,8 @@
 		B9B166832C97DAED001C7788 /* Bookmark */ = {
 			isa = PBXGroup;
 			children = (
-				B9B166862C97DF8A001C7788 /* BookmarkManager.swift */,
-				B9B166842C97DB17001C7788 /* BookmarkViewController.swift */,
 				B908CC552C99202100D0AD2D /* BookmarkViewModel.swift */,
+				B9B166842C97DB17001C7788 /* BookmarkViewController.swift */,
 			);
 			path = Bookmark;
 			sourceTree = "<group>";

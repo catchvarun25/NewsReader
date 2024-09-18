@@ -19,6 +19,10 @@ enum AppConstants {
         static let kErrorMessage: String = "Failed to Load Page"
     }
     
+    enum Network {
+        static let kRequestTimeOut: Double = 5.0
+    }
+    
     enum PageTitle {
         static let kHome: String = "Top Headlines"
         static let kArticleDetail: String = "Detail Page"
