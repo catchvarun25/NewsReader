@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Combine
 
 protocol BookmarkManagerProtocol {
     func getBookMarkedIds() -> Set<String>
@@ -27,7 +28,7 @@ class BookmarkManager: BookmarkManagerProtocol {
     }
 
     func getBookmarkedArticles() -> [ArticleDisplayModel] {
-        if let data = defaults.data(forKey: Constants.kBookMarkKey),
+        if let data = defaults.data(forKey: UserDefaults.Keys.bookmarkedArticles),
            let articles = try? JSONDecoder().decode([ArticleDisplayModel].self, from: data) {
             return articles
         }
@@ -37,7 +38,7 @@ class BookmarkManager: BookmarkManagerProtocol {
     func addToBookmark(_ article: ArticleDisplayModel) {
         let updatedBookMarkedArticles = [article] + getBookmarkedArticles()
         if let data = try? JSONEncoder().encode(updatedBookMarkedArticles) {
-            defaults.setValue(data, forKey: Constants.kBookMarkKey)
+            defaults.setValue(data, forKey: UserDefaults.Keys.bookmarkedArticles)
             defaults.synchronize()
         }
     }
@@ -46,19 +47,13 @@ class BookmarkManager: BookmarkManagerProtocol {
         let existingArticles = getBookmarkedArticles()
         let updatedArticles = existingArticles.filter {$0.id != article.id}
         if let data = try? JSONEncoder().encode(updatedArticles) {
-            defaults.setValue(data, forKey: Constants.kBookMarkKey)
+            defaults.setValue(data, forKey: UserDefaults.Keys.bookmarkedArticles)
             defaults.synchronize()
         }
     }
     
     func removeAllBookmarks() {
-        defaults.removeObject(forKey: Constants.kBookMarkKey)
+        defaults.removeObject(forKey: UserDefaults.Keys.bookmarkedArticles)
         defaults.synchronize()
-    }
-}
-
-extension BookmarkManager {
-    private enum Constants {
-        static let kBookMarkKey: String = "SavedBookmarkArticles"
     }
 }

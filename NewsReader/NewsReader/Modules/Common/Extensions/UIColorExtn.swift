@@ -8,7 +8,6 @@
 
 import UIKit
 
-//TODO: Remove extra colors
 extension UIColor {
     static let grayDarkestNR = UIColor(hex: 0x333333)
     static let grayMediumNR = UIColor(hex: 0x888888)

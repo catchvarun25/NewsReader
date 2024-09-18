@@ -41,7 +41,8 @@ class NewsReaderHomeViewController: UIViewController {
     }()
     
     private var categoryListData: [CategoryTypeDisplayModel] = []
-        
+    
+    //MARK: Lifecycle Methods
     init(viewModel: NewsReaderHomeViewModelProtocol = NewsReaderHomeViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -59,12 +60,12 @@ class NewsReaderHomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "Top Headlines"
+        self.title = AppConstants.PageTitle.kHome
         navigationController?.setNavigationBar(type: .whiteWithBottomBorder)
     }
     
     
-    //MARK: Private Methods
+    //MARK: Private Methods - 
     private func setupUI() {
         navigationItem.rightBarButtonItem = bookmarkButton
 

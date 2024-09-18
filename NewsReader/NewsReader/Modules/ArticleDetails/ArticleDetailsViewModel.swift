@@ -17,29 +17,41 @@ protocol ArticleDetailsViewModelProtocol {
     func didTapBookmarkItem()
 }
 
-class ArticleDetailsViewModel: ArticleDetailsViewModelProtocol {    
-    //MARK: Private Accessors -
-    private let bookmarkManager: BookmarkManagerProtocol
-    @Published 
-    private var articleModel: ArticleDisplayModel
-    private var bookmarkCancellable: AnyCancellable?
+class ArticleDetailsViewModel: ArticleDetailsViewModelProtocol {
     //MARK: Public Accessors -
     var articleModelPublisher: Published<ArticleDisplayModel>.Publisher { $articleModel }
+
+    //MARK: Private Accessors -
+    @Published
+    private var articleModel: ArticleDisplayModel
+    private let bookmarkManager: BookmarkManagerProtocol
+    private var bookmarkCancellable: AnyCancellable?
+    private var bookmarkTapSubject = PassthroughSubject<Void, Never>()
     
     //MARK: LifeCycle Methods -
     required init(articleModel: ArticleDisplayModel,
                   bookmarkManager: BookmarkManagerProtocol = BookmarkManager.shared) {
         self.bookmarkManager = bookmarkManager
         self.articleModel = articleModel
+        addBookmarkHandler()
     }
     
     //MARK: Public Methods -
     func didTapBookmarkItem() {
-        articleModel.isBookmarked = !articleModel.isBookmarked
-        if articleModel.isBookmarked {
-            bookmarkManager.addToBookmark(articleModel)
-        } else {
-            bookmarkManager.removeFromBookmark(articleModel)
-        }
+        bookmarkTapSubject.send()
+    }
+    
+    private func addBookmarkHandler() {
+        bookmarkCancellable = bookmarkTapSubject
+            .debounce(for: 0.5, scheduler: RunLoop.main)
+            .sink { [weak self] _ in
+                guard let self = self else { return }
+                articleModel.isBookmarked = !articleModel.isBookmarked
+                if articleModel.isBookmarked {
+                    bookmarkManager.addToBookmark(articleModel)
+                } else {
+                    bookmarkManager.removeFromBookmark(articleModel)
+                }
+            }
     }
 }

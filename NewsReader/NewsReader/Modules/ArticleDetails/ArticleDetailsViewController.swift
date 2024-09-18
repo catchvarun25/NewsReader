@@ -55,7 +55,7 @@ class ArticleDetailsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //TODO: Handle With Localisation
-        self.title = articleModel.source ?? "Detail Page"
+        self.title = articleModel.source ?? AppConstants.PageTitle.kArticleDetail
         navigationController?.setNavigationBar(type: .whiteWithBottomBorder)
     }
     
@@ -82,7 +82,6 @@ class ArticleDetailsViewController: UIViewController {
 
     
     private func updateBookMarkIcon() {
-        print("VARUN: Calling updateBookMarkIcon.....")
         let imageName = articleModel.isBookmarked ? "bookmark.fill" : "bookmark"
         let barItem = UIBarButtonItem(image: UIImage(systemName: imageName),
                                       style: .plain,

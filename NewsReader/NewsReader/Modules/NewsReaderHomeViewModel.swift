@@ -27,9 +27,9 @@ protocol NewsReaderHomeViewModelProtocol: NewsReaderCategoryChangeableProtocol {
 class NewsReaderHomeViewModel: NewsReaderHomeViewModelProtocol  {
     
     var categoriesData:Published<[CategoryTypeDisplayModel]>.Publisher { $categoriesDataPublisher }
-    private let articleListViewModel: ArticleListViewModelProtocol
     @Published
     private var categoriesDataPublisher: [CategoryTypeDisplayModel] = []
+    private let articleListViewModel: ArticleListViewModelProtocol
     
     init(_ articleListViewModel: ArticleListViewModelProtocol = ArticleListViewModel()) {
         self.articleListViewModel = ArticleListViewModel()

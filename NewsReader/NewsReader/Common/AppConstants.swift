@@ -19,5 +19,11 @@ enum AppConstants {
         static let kErrorMessage: String = "Failed to Load Page"
     }
     
+    enum PageTitle {
+        static let kHome: String = "Top Headlines"
+        static let kArticleDetail: String = "Detail Page"
+        static let BookmarkArticles: String = "Bookmark Articles"
+    }
+    
     static let kDefaultSelectedCategory: ArticleCategoryTypes = .general
 }

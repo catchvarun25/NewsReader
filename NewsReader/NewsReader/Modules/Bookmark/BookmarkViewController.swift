@@ -48,7 +48,7 @@ class BookmarkViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.title = "Bookmark Articles"
+        self.title = AppConstants.PageTitle.BookmarkArticles
         navigationController?.setNavigationBar(type: .whiteWithBottomBorder)
     }
     

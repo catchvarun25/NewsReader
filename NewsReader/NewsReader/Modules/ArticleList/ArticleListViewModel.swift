@@ -33,8 +33,8 @@ final class ArticleListViewModel: ArticleListViewModelProtocol {
     private var disposeBag = Set<AnyCancellable>()
     private var selectedCategory: ArticleCategoryTypes = AppConstants.kDefaultSelectedCategory
     private var listData = [ArticleDisplayModel]()
-
-    @Published private var fetchStatus: ArticleListFetchStatus = .none
+    @Published 
+    private var fetchStatus: ArticleListFetchStatus = .none
 
     //MARK: Public Accessors -
     var fetchStatusPublisher: Published<ArticleListFetchStatus>.Publisher { $fetchStatus }
@@ -45,6 +45,11 @@ final class ArticleListViewModel: ArticleListViewModelProtocol {
         self.service = service
         self.bookmarkManager = bookmarkManager
         self.selectedCategory = selectedCategory
+        NotificationCenter.default.publisher(for: UserDefaults.didChangeNotification)
+            .sink { [weak self] _ in
+                self?.updateArticlesListOnBookmark()
+            }
+            .store(in: &disposeBag)
     }
     
     //MARK: Public Methods -
@@ -59,24 +64,41 @@ final class ArticleListViewModel: ArticleListViewModelProtocol {
                 case .finished:
                     break
                 case .failure(let error):
-                    print("VARUN: Error At ViewModel: \(error.localizedDescription)")
                     self?.fetchStatus = .failure(error: .map(error))
                 }
             }, receiveValue: { [weak self] data in
                 guard let self = self, let responseData = data, let articles = responseData.articles else { return }
-                let bookMarkedIds = self.bookmarkManager.getBookMarkedIds()
-                let articleDisplayModels = articles.compactMap { (respModel) in
-                    if var displayModel = ArticleDisplayModel(respModel) {
-                        displayModel.isBookmarked = bookMarkedIds.contains(displayModel.id)
-                        return displayModel
-                    }
-                    return nil
-                }
-                self.listData = self.listData + articleDisplayModels
-                self.fetchStatus = .success(data: self.listData)
+                self.updateArticleListWithNew(articles: articles)
             })
             .store(in: &disposeBag)
-    }    
+    }  
+    
+    private func updateArticleListWithNew(articles: [ArticleResp]) {
+        autoreleasepool {
+            let bookMarkedIds = self.bookmarkManager.getBookMarkedIds()
+            let articleDisplayModels = articles.compactMap { (respModel) in
+                if var displayModel = ArticleDisplayModel(respModel) {
+                    displayModel.isBookmarked = bookMarkedIds.contains(displayModel.id)
+                    return displayModel
+                }
+                return nil
+            }
+            self.listData = self.listData + articleDisplayModels
+            self.fetchStatus = .success(data: self.listData)
+        }
+    }
+    
+    private func updateArticlesListOnBookmark() {
+        autoreleasepool {
+            let bookMarkedIds = self.bookmarkManager.getBookMarkedIds()
+            listData = listData.map { article in
+                var mutableArticle = article
+                mutableArticle.isBookmarked = bookMarkedIds.contains(mutableArticle.id)
+                return mutableArticle
+            }
+            fetchStatus = .success(data: self.listData)
+        }
+    }
 }
 
 extension ArticleListViewModel {

@@ -21,6 +21,8 @@
 		B9143D0F2C94865B00677B10 /* NewsReaderHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9143D0E2C94865B00677B10 /* NewsReaderHomeViewController.swift */; };
 		B9143D112C948AB500677B10 /* UIViewControllerContainmentExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9143D102C948AB500677B10 /* UIViewControllerContainmentExtn.swift */; };
 		B9143D132C948CF900677B10 /* NewsReaderHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9143D122C948CF900677B10 /* NewsReaderHomeViewModel.swift */; };
+		B93806732C9AA22C0007E7C3 /* UIViewSafeExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93806722C9AA22C0007E7C3 /* UIViewSafeExtn.swift */; };
+		B93806752C9AAB5E0007E7C3 /* UserDefaultsExtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = B93806742C9AAB5E0007E7C3 /* UserDefaultsExtn.swift */; };
 		B94313C52BF9E1B300F4EE62 /* NRSpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B94313C42BF9E1B300F4EE62 /* NRSpacerView.swift */; };
 		B947E4FB2BFC848A00454D71 /* ArticleListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B947E4FA2BFC848A00454D71 /* ArticleListCell.swift */; };
 		B947E4FD2BFCF8F100454D71 /* NRRefreshCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B947E4FC2BFCF8F100454D71 /* NRRefreshCollectionViewController.swift */; };
@@ -98,6 +100,8 @@
 		B9143D0E2C94865B00677B10 /* NewsReaderHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsReaderHomeViewController.swift; sourceTree = "<group>"; };
 		B9143D102C948AB500677B10 /* UIViewControllerContainmentExtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerContainmentExtn.swift; sourceTree = "<group>"; };
 		B9143D122C948CF900677B10 /* NewsReaderHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsReaderHomeViewModel.swift; sourceTree = "<group>"; };
+		B93806722C9AA22C0007E7C3 /* UIViewSafeExtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewSafeExtn.swift; sourceTree = "<group>"; };
+		B93806742C9AAB5E0007E7C3 /* UserDefaultsExtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtn.swift; sourceTree = "<group>"; };
 		B94313C42BF9E1B300F4EE62 /* NRSpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRSpacerView.swift; sourceTree = "<group>"; };
 		B947E4FA2BFC848A00454D71 /* ArticleListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListCell.swift; sourceTree = "<group>"; };
 		B947E4FC2BFCF8F100454D71 /* NRRefreshCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NRRefreshCollectionViewController.swift; sourceTree = "<group>"; };
@@ -358,6 +362,8 @@
 				B9143D092C94500700677B10 /* SizeExtn.swift */,
 				B9143D102C948AB500677B10 /* UIViewControllerContainmentExtn.swift */,
 				B96D1D322C95566A004087F3 /* CommonStyleExtn.swift */,
+				B93806722C9AA22C0007E7C3 /* UIViewSafeExtn.swift */,
+				B93806742C9AAB5E0007E7C3 /* UserDefaultsExtn.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -600,6 +606,7 @@
 				B9A7D0BF2BFB10C9002A579A /* UINavigationBarExtn.swift in Sources */,
 				B94FC9F42BF8A1EB0052D2D1 /* Configurator.swift in Sources */,
 				B908CC562C99202100D0AD2D /* BookmarkViewModel.swift in Sources */,
+				B93806752C9AAB5E0007E7C3 /* UserDefaultsExtn.swift in Sources */,
 				B99A580C2BFB060E008D0C48 /* UIViewSizeExtn.swift in Sources */,
 				B958778B2BF98870008E0330 /* UIStackViewExtn.swift in Sources */,
 				B9A7D0BD2BFB0E75002A579A /* NRErrorView.swift in Sources */,
@@ -616,6 +623,7 @@
 				96D6F5FD280F47B0009338BF /* UIColorExtn.swift in Sources */,
 				B947E4FB2BFC848A00454D71 /* ArticleListCell.swift in Sources */,
 				B94FC9FB2BF8A5120052D2D1 /* URLCacheManager.swift in Sources */,
+				B93806732C9AA22C0007E7C3 /* UIViewSafeExtn.swift in Sources */,
 				B96D1D332C95566A004087F3 /* CommonStyleExtn.swift in Sources */,
 				B94FC9FD2BF8A5120052D2D1 /* EndpointService.swift in Sources */,
 				B94FCA1A2BF8DB210052D2D1 /* NRArticleShortView.swift in Sources */,

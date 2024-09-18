@@ -18,7 +18,8 @@ final class ArticleListCell: UICollectionViewCell {
         return button
     }()
     private let divider = NRDividerView()
-
+    
+    //MARK: Lifecycle Methods -
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupUI()
@@ -28,6 +29,14 @@ final class ArticleListCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: Public Methods -
+    func configureView(data: ArticleDisplayModel, showDivider: Bool = true) {
+        listItemView.configureView(data: data)
+        divider.isHidden = !showDivider
+        updateIfBookMarked(data)
+    }
+    
+    //MARK: Private Methods -
     private func setupUI() {
         addSubview(listItemView)
         addSubview(divider)
@@ -48,12 +57,6 @@ final class ArticleListCell: UICollectionViewCell {
         }
     }
     
-    func configureView(data: ArticleDisplayModel, showDivider: Bool = true) {
-        listItemView.configureView(data: data)
-        divider.isHidden = !showDivider
-        updateIfBookMarked(data)
-    }
-    
     private func updateIfBookMarked(_ data: ArticleDisplayModel) {
         if data.isBookmarked {
             addSubview(bookMarkButton)
@@ -62,6 +65,8 @@ final class ArticleListCell: UICollectionViewCell {
                 make.top.equalToSuperview()
                 make.trailing.equalToSuperview()
             }
+        } else {
+            bookMarkButton.safeRemoveFromSuperView()
         }
     }
 }

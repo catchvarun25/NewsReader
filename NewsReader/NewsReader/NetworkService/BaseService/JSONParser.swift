@@ -15,7 +15,6 @@ struct JSONParser {
         do {
             return try decoder.decode(T.self, from: data)
         } catch {
-            print("VARUN: Parser Error: \(error.localizedDescription)")
             throw APIError.parseFailure(message: "Parser Error: \(error.localizedDescription)")
         }
     }

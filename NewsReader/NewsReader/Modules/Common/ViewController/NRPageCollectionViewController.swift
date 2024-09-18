@@ -44,14 +44,6 @@ class NRPageCollectionViewController: UICollectionViewController {
         let currentYOffset = scrollView.contentOffset.y
         let pageCount = Int(contentHeight / scrollViewHeight)
         let pageNumber = Int((currentYOffset + abs(initialContentOffsetY ?? 0.0)) / scrollViewHeight)
-        print("VARUN: ContentHeight: \(scrollView.contentSize.height)")
-        print("VARUN: scrollViewHeight: \(scrollViewHeight)")
-        print("VARUN: currentYOffset: \(currentYOffset)")
-        print(">>>>>>>>>")
-        print("VARUN: pageCount: \(pageCount)")
-        print("VARUN: pageNumber: \(pageNumber)")
-        print("<<<<<<<<<")
-
         if  pageNumber == pageCount - 1 && pageCount > prevPageCount {
                 prevPageCount = pageCount
                 loadMoreData()
@@ -61,7 +53,6 @@ class NRPageCollectionViewController: UICollectionViewController {
     override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         let currentYOffset = scrollView.contentOffset.y
         if initialContentOffsetY == nil {
-            print("VARUN: initialContentOffsetY: \(currentYOffset)")
             initialContentOffsetY = currentYOffset
         }
     }
