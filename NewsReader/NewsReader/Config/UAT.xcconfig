@@ -13,4 +13,4 @@
 
 //-----NewsReader-----------
 TARGET_HOST = newsapi.org
-API_KEY = 3fd1e11ea3984d1c9c6d324af245aea1
+API_KEY = <Replace_It_With_Your_API_Key>
