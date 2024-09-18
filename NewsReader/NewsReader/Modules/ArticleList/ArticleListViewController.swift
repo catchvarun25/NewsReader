@@ -49,24 +49,25 @@ final class ArticleListViewController: NRPageCollectionViewController {
         viewModel.fetchStatusPublisher
             .receive(on: DispatchQueue.main, options: nil)
             .sink { [weak self] fetchStatus in
+                guard let self = self else { return }
                 switch fetchStatus {
                 case .loading:
-                    self?.hideError()
-                    self?.showLoader()
+                    self.hideError()
+                    self.showLoader()
                 case .success(let listData):
-                    self?.hideLoader()
-                    self?.listData = listData
-                    self?.collectionView.reloadData()
+                    self.hideLoader()
+                    self.listData = listData
+                    self.collectionView.reloadData()
                 case .failure(let error):
-                    self?.hideLoader()
-                    self?.showError(message: error.message, handler: {
-                        self?.listData = []
-                        self?.reloadContent()
+                    self.hideLoader()
+                    self.showError(message: error.message, handler: {
+                        self.listData = []
+                        self.reloadContent()
                     })
                 case .reset:
-                    self?.listData = []
-                    self?.collectionView.reloadData()
-                    self?.reloadContent()
+                    self.listData = []
+                    self.collectionView.reloadData()
+                    self.reloadContent()
                 case .none:
                     debugPrint("")
                 }

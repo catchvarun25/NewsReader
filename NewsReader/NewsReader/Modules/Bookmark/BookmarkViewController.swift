@@ -3,7 +3,7 @@
 //  NewsReader
 //
 //  Created by Varun Mehta on 16/9/24.
-//  Copyright © 2024 Target. All rights reserved.
+//  Copyright © 2024 NewsReader. All rights reserved.
 //
 
 import UIKit
@@ -75,6 +75,7 @@ class BookmarkViewController: UIViewController {
                 if articleList.isEmpty {
                     showNoBookmarkMessage()
                 } else {
+                    hideError()
                     bookmarkListData = articleList
                     articleListView.reloadData()
                 }
