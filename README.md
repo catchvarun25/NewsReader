@@ -30,8 +30,8 @@ NewsReader app that you can use anytime, anywhere to check the latest news from 
 
 # Get Started
 `1.` System Requirements
-- iOS 14.0+
-- Xcode 13.0+
+     - iOS 14.0+
+     - Xcode 13.0+
 `2.` Goto https://newsapi.org/
 `3.` Create your own API Key and add it to `API_KEY` under RELEASE.xcconfig and UAT.xcconfig files.
 `4.` Launch the project from Xcode and you are good to go.
