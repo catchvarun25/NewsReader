@@ -8,8 +8,6 @@
 
 import Foundation
 
-typealias ArticleID = UInt
-
 enum ResponseType: String, Codable {
     case success
     case error

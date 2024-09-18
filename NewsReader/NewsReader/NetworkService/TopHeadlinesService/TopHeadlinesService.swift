@@ -10,12 +10,14 @@ import Foundation
 import Combine
 
 protocol TopHeadlinesServiceProtocol {
-    func asyncGetTopHeadLinesFor(_ category: ArticleCategoryTypes, pageNumber: Int) -> AnyPublisher<ArticleListResp?, APIError>
+    func asyncGetTopHeadLinesFor(_ category: ArticleCategoryTypes, 
+                                 pageNumber: Int) -> AnyPublisher<ArticleListResp?, APIError>
 }
 
 extension TopHeadlinesServiceProtocol {
     func asyncGetTopHeadLines(_ pageNumber: Int) -> AnyPublisher<ArticleListResp?, APIError> {
-        asyncGetTopHeadLinesFor(AppConstants.kDefaultSelectedCategory, pageNumber: pageNumber)
+        asyncGetTopHeadLinesFor(AppConstants.kDefaultSelectedCategory, 
+                                pageNumber: pageNumber)
     }
 }
 
@@ -27,7 +29,8 @@ class TopHeadlinesService: TopHeadlinesServiceProtocol {
         self.networkManager = networkManager
     }
     
-    func asyncGetTopHeadLinesFor(_ category: ArticleCategoryTypes, pageNumber: Int) -> AnyPublisher<ArticleListResp?, APIError> {
+    func asyncGetTopHeadLinesFor(_ category: ArticleCategoryTypes, 
+                                 pageNumber: Int) -> AnyPublisher<ArticleListResp?, APIError> {
         let endpoint = Endpoint.topHeadLinesList(category, pageNumber, Constants.kPageSize )
         return networkManager.fetch(with: endpoint)
     }

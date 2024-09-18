@@ -15,7 +15,6 @@ protocol URLCacheManagerProtocol {
 
 class URLCacheManager {
     static let shared = URLCacheManager()
-    
     private let cache: URLCache
     
     private init() {

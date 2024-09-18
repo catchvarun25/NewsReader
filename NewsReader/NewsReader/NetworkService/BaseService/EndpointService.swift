@@ -16,8 +16,9 @@ struct API {
 
 struct Endpoint {
     let path: String
+    let cacheSupport: Bool
     let queryItems: [URLQueryItem]?
-
+    
     var url: URL? {
         var components = URLComponents()
         components.scheme = API.scheme
@@ -31,7 +32,9 @@ struct Endpoint {
 // Article List Endpoints
 extension Endpoint {
     static func topHeadLinesList(_ category: ArticleCategoryTypes, _ page: Int, _ pageSize: Int) -> Endpoint {
-        return Endpoint(path: String(format: "/v2/top-headlines"), queryItems: [
+        return Endpoint(path: String(format: "/v2/top-headlines"),
+                        cacheSupport: page == 1,
+                        queryItems: [
             URLQueryItem(name: "category", value: category.rawValue),
             URLQueryItem(name: "apiKey", value: API.api_key),
             URLQueryItem(name: "pageSize", value: "\(pageSize)"),

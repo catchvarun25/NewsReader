@@ -68,12 +68,12 @@ final class ArticleListViewModel: ArticleListViewModelProtocol {
                 }
             }, receiveValue: { [weak self] data in
                 guard let self = self, let responseData = data, let articles = responseData.articles else { return }
-                self.updateArticleListWithNew(articles: articles)
+                self.updateArticleListWithNew(page: page, articles: articles)
             })
             .store(in: &disposeBag)
     }  
     
-    private func updateArticleListWithNew(articles: [ArticleResp]) {
+    private func updateArticleListWithNew(page: Int, articles: [ArticleResp]) {
         autoreleasepool {
             let bookMarkedIds = self.bookmarkManager.getBookMarkedIds()
             let articleDisplayModels = articles.compactMap { (respModel) in
@@ -83,7 +83,12 @@ final class ArticleListViewModel: ArticleListViewModelProtocol {
                 }
                 return nil
             }
-            self.listData = self.listData + articleDisplayModels
+            if page == Constants.kFirstPage {
+                print("VARUN: PageNumber=\(page)")
+                self.listData = articleDisplayModels
+            } else {
+                self.listData = self.listData + articleDisplayModels
+            }
             self.fetchStatus = .success(data: self.listData)
         }
     }
@@ -105,5 +110,11 @@ extension ArticleListViewModel {
     func onChangeSelectedCategory(_ type: ArticleCategoryTypes) {
         selectedCategory = type
         fetchStatus = .reset
+    }
+}
+
+extension ArticleListViewModel {
+    private enum Constants {
+        static let kFirstPage: Int = 1
     }
 }

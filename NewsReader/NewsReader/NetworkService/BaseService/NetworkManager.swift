@@ -65,7 +65,9 @@ extension NetworkManager: Fetchable {
         let freshDataPublisher = URLSession.shared.dataTaskPublisher(for: request)
             .tryMap { [weak self] data, response -> T? in
                 // Cache the new response
-                self?.cacheManager.storeResponse(response, for: request, data: data)
+                if endpoint.cacheSupport {
+                    self?.cacheManager.storeResponse(response, for: request, data: data)
+                }
                 return try JSONParser.decode(data)
             }
             .mapError {
@@ -73,9 +75,8 @@ extension NetworkManager: Fetchable {
             }
             .eraseToAnyPublisher()
         
-        return freshDataPublisher.eraseToAnyPublisher()
-//        return Publishers.(cachedPublisher, freshDataPublisher)
-//            .eraseToAnyPublisher()
+        return Publishers.Merge(cachedPublisher, freshDataPublisher)
+            .eraseToAnyPublisher()
         
     }
 }
