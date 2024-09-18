@@ -84,7 +84,6 @@ final class ArticleListViewModel: ArticleListViewModelProtocol {
                 return nil
             }
             if page == Constants.kFirstPage {
-                print("VARUN: PageNumber=\(page)")
                 self.listData = articleDisplayModels
             } else {
                 self.listData = self.listData + articleDisplayModels

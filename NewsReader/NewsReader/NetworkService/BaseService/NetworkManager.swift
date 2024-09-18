@@ -49,7 +49,6 @@ extension NetworkManager: Fetchable {
         }
         
         var request = URLRequest(url: url)
-        print("VARUN: URL: \(url)")
         request.httpMethod = "GET"
         
         // Publisher for cached response
