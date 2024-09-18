@@ -11,18 +11,20 @@ NewsReader app that you can use anytime, anywhere to check the latest news from 
 ## Features
 - **Filter Article**: You can filter the article based on the following categories that are 
                       supported business, entertainment, general, health, science, sports, technology.
-- **Bookmark**: You can bookmark any article to checkout later.
+- **Bookmark**: You can bookmark or undo bookmark any article to checkout later.
+- ** Article Details**: Check out article details from its source page.
 
 ## Tech Stack
-- Implemented using Swift
+- Implemented using Swift, Combine
 - `Source`: NewsAPI https://newsapi.org/
+- `Third-Party Dependencies:` SnapKit, SDWebImage/Core, LookinServer.
 - Followed MVVM design pattern with SOLID design principles.
 - Protocol oriented programming to better mock dependecies to write testcases.
 
 ## Source Code
 `Config`: Supports UAT/Release configuration that can eaisly be managed using UAT.xcconfig/RELEASE.xcconfig files
     
-`NetworkService`: Service layer to consume REST APIs using URLSession, Parser, Cache, Endpoint manager component that can be resused for any services like `TopHeadlines` here.
+`NetworkService`: Service layer to consume REST APIs using URLSession, Parser, Cache, Endpoint Managers component that can be resused for any services like `TopHeadlines` here.
 
 `Module`: UI screens implementation for ArticleList, ArticleDetails & Bookmark. Its implemented using MVVM design pattern.
 
