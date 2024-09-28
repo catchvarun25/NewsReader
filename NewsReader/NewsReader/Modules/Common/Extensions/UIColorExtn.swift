@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 extension UIColor {
     static let grayDarkestNR = UIColor(hex: 0x333333)
@@ -30,4 +31,9 @@ extension UIColor {
         let b = CGFloat((hex >> 00) & 0xff) / 255
         self.init(red: r, green: g, blue: b, alpha: alpha)
     }
+}
+
+
+extension Color {
+    static let redNR = Color(UIColor(hex: 0xCC0000))
 }

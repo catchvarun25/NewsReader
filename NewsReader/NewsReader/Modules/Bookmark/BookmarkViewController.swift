@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import Combine
+import SwiftUI
 
 class BookmarkViewController: UIViewController {
     //MARK: Private Accessor
@@ -105,8 +106,8 @@ extension BookmarkViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cellData = bookmarkListData[safe: indexPath.row] {
-            let detailViewController = ArticleDetailsViewController(articleModel: cellData)
-            self.navigationController?.pushViewController(detailViewController, animated: true)
+            let swiftUIDetailView = UIHostingController(rootView: ArticleDetailsView(viewModel: ArticleDetailsViewModel(articleModel: cellData)))
+            self.navigationController?.pushViewController(swiftUIDetailView, animated: true)
         }
     }
 }

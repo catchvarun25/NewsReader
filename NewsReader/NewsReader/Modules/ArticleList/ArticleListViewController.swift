@@ -9,6 +9,7 @@
 import UIKit
 import Combine
 import SnapKit
+import SwiftUI
 
 final class ArticleListViewController: NRPageCollectionViewController {
     //MARK: Private Accessors -
@@ -95,8 +96,8 @@ extension ArticleListViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cellData = listData[safe: indexPath.row] {
-            let detailViewController = ArticleDetailsViewController(articleModel: cellData)
-            self.navigationController?.pushViewController(detailViewController, animated: true)
+            let swiftUIDetailView = UIHostingController(rootView: ArticleDetailsView(viewModel: ArticleDetailsViewModel(articleModel: cellData)))
+            self.navigationController?.pushViewController(swiftUIDetailView, animated: true)
         }
     }
 }
