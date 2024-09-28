@@ -28,6 +28,6 @@ enum AppConstants {
         static let kArticleDetail: String = "Detail Page"
         static let BookmarkArticles: String = "Bookmark Articles"
     }
-    
+    static let kDefaultPageSize: Int = 20
     static let kDefaultSelectedCategory: ArticleCategoryTypes = .general
 }

@@ -31,7 +31,9 @@ struct Endpoint {
 
 // Article List Endpoints
 extension Endpoint {
-    static func topHeadLinesList(_ category: ArticleCategoryTypes, _ page: Int, _ pageSize: Int) -> Endpoint {
+    static func topHeadLinesList(_ category: ArticleCategoryTypes, 
+                                 _ page: Int,
+                                 _ pageSize: Int) -> Endpoint {
         return Endpoint(path: String(format: "/v2/top-headlines"),
                         cacheSupport: page == 1,
                         queryItems: [

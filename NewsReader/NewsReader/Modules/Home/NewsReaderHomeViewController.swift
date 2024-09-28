@@ -46,7 +46,6 @@ class NewsReaderHomeViewController: UIViewController {
     init(viewModel: NewsReaderHomeViewModelProtocol = NewsReaderHomeViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        bindPublishers()
     }
     
     required init?(coder: NSCoder) {
@@ -56,6 +55,7 @@ class NewsReaderHomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        bindPublishers()
     }
     
     override func viewWillAppear(_ animated: Bool) {

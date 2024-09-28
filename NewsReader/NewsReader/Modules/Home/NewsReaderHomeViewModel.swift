@@ -32,7 +32,7 @@ class NewsReaderHomeViewModel: NewsReaderHomeViewModelProtocol  {
     private let articleListViewModel: ArticleListViewModelProtocol
     
     init(_ articleListViewModel: ArticleListViewModelProtocol = ArticleListViewModel()) {
-        self.articleListViewModel = ArticleListViewModel()
+        self.articleListViewModel = articleListViewModel
         fillCategoriesData()
     }
     
