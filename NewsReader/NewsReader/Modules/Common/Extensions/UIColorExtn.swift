@@ -36,4 +36,5 @@ extension UIColor {
 
 extension Color {
     static let redNR = Color(UIColor(hex: 0xCC0000))
+    static let grayLightNR = Color(UIColor(hex: 0xD6D6D6))
 }

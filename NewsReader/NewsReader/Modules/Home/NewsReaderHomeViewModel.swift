@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct CategoryTypeDisplayModel {
+struct CategoryTypeDisplayModel: Identifiable {
+    var id: String
     let name: String
     let type: ArticleCategoryTypes
     var isSelected: Bool = false
@@ -18,17 +19,16 @@ protocol NewsReaderCategoryChangeableProtocol {
     func onChangeSelectedCategory(_ type: ArticleCategoryTypes)
 }
 
-protocol NewsReaderHomeViewModelProtocol: NewsReaderCategoryChangeableProtocol {
-    var categoriesData: Published<[CategoryTypeDisplayModel]>.Publisher { get }
+protocol NewsReaderHomeViewModelProtocol: NewsReaderCategoryChangeableProtocol, ObservableObject {
+    var categoriesData: [CategoryTypeDisplayModel] { get }
     func getArticleListViewModel() -> ArticleListViewModelProtocol
 }
 
 
 class NewsReaderHomeViewModel: NewsReaderHomeViewModelProtocol  {
     
-    var categoriesData:Published<[CategoryTypeDisplayModel]>.Publisher { $categoriesDataPublisher }
     @Published
-    private var categoriesDataPublisher: [CategoryTypeDisplayModel] = []
+    private(set) var categoriesData:[CategoryTypeDisplayModel] = []
     private let articleListViewModel: ArticleListViewModelProtocol
     
     init(_ articleListViewModel: ArticleListViewModelProtocol = ArticleListViewModel()) {
@@ -41,23 +41,25 @@ class NewsReaderHomeViewModel: NewsReaderHomeViewModelProtocol  {
     }
 
     private func fillCategoriesData() {
-        if categoriesDataPublisher.count > 0 {
+        if categoriesData.count > 0 {
             return
         }
         var tempCategories: [CategoryTypeDisplayModel] = []
         for categoryType in ArticleCategoryTypes.allCases {
-            var categoryDisplayModel = CategoryTypeDisplayModel(name: categoryType.rawValue, type: categoryType)
+            var categoryDisplayModel = CategoryTypeDisplayModel(id: categoryType.rawValue,
+                                                                name: categoryType.rawValue.capitalized,
+                                                                type: categoryType)
             categoryDisplayModel.isSelected = categoryType == AppConstants.kDefaultSelectedCategory
             tempCategories.append(categoryDisplayModel)
         }
-        categoriesDataPublisher.append(contentsOf: tempCategories)
+        categoriesData.append(contentsOf: tempCategories)
     }
     
 }
 
 extension NewsReaderHomeViewModel : NewsReaderCategoryChangeableProtocol{
     func onChangeSelectedCategory(_ type: ArticleCategoryTypes) {
-        categoriesDataPublisher = categoriesDataPublisher.map { model in
+        categoriesData = categoriesData.map { model in
             var updatedModel = model
             updatedModel.isSelected = updatedModel.type == type
             return updatedModel
