@@ -28,7 +28,7 @@ class NewsReaderHomeViewModelTests: XCTestCase {
         let expectation = XCTestExpectation(description: "Expectation to fill categories data")
         
         //When..
-        subject.categoriesData
+        subject.$categoriesData
             .sink { categoriesData in
                 if categoriesData.count > 0 {
                     //Then..
@@ -49,7 +49,7 @@ class NewsReaderHomeViewModelTests: XCTestCase {
         
         let expectation = XCTestExpectation(description: "Selected category should be updated")
         
-        subject.categoriesData
+        subject.$categoriesData
             .dropFirst()
             .sink { categories in
                 let selectedCategory = categories.first { $0.isSelected }
