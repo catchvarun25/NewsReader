@@ -25,6 +25,7 @@ class ArticleListViewModelTests: XCTestCase {
     
     override func tearDown() {
         subject = nil
+        mockNetworkManager = nil
         super.tearDown()
     }
     
@@ -71,6 +72,29 @@ class ArticleListViewModelTests: XCTestCase {
         
         //Then..
         wait(for: [expectation], timeout: 1.0)
+    }
+    
+    func testOnChangeSelectedCategory() {
+        
+        //Given..
+        let expectation = expectation(description: "Expectation on changing category")
+        
+        //When..
+        subject.onChangeSelectedCategory(ArticleCategoryTypes.science)
+        
+        //Then..
+        subject.fetchStatusPublisher.sink { status in
+            switch status {
+            case .reset:
+                expectation.fulfill()
+            default:
+                debugPrint("NR: fetchArticleList Status: \(status)")
+            }
+        }
+        .store(in: &disposeBag)
+        
+        wait(for: [expectation], timeout: 1.0)
+
     }
 
 }

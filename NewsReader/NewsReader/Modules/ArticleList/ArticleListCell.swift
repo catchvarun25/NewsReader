@@ -13,7 +13,7 @@ final class ArticleListCell: UICollectionViewCell {
     //MARK: Private Accessors -
     private lazy var listItemView = NRArticleShortView()
     private lazy var bookMarkButton: NRButton = {
-        let button = NRButton(iconName: "bookmark.fill", backgroundColor: .clear)
+        let button = NRButton(iconName: Constants.kBookmarkIconName, backgroundColor: .clear)
         button.tintColor = .redNR
         return button
     }()
@@ -74,5 +74,6 @@ final class ArticleListCell: UICollectionViewCell {
 extension ArticleListCell {
     private enum Constants {
         static let kCellInset: CGFloat = 16.0
+        static let kBookmarkIconName = "bookmark.fill"
     }
 }

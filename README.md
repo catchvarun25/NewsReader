@@ -15,11 +15,12 @@ NewsReader app that you can use anytime, anywhere to check the latest news from 
 - **Article Details**: Check out article details from its source page.
 
 ## Tech Stack
-- Implemented using Swift,SwiftUI,Combine
+- Implemented using `Swift`,`SwiftUI`,`Combine`
 - Source: `NewsAPI` https://newsapi.org/
 - Third-Party Dependencies: `SnapKit`, `SDWebImage/Core`, `LookinServer`.
 - Followed MVVM design pattern with SOLID design principles.
 - Protocol oriented programming to better mock dependecies to write testcases.
+- `XCTest` : To test the logical part of the application.
 
 ## Source Code
 `Config`: Supports UAT/Release configuration that can eaisly be managed using UAT.xcconfig/RELEASE.xcconfig files

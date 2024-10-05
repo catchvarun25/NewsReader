@@ -7,18 +7,19 @@ import Combine
 
 @testable import NewsReader
 
-class NewsReaderHomeViewModelTests: XCTestCase {
-    var subject: NewsReaderHomeViewModel!
+class HomeViewModelTests: XCTestCase {
+    var subject: HomeViewModel!
     private var disposeBag = Set<AnyCancellable>()
     private var mockArticleListViewModel:MockArticleListViewModel!
     override func setUp() {
         super.setUp()
         mockArticleListViewModel = MockArticleListViewModel()
-        subject = NewsReaderHomeViewModel(mockArticleListViewModel)
+        subject = HomeViewModel(mockArticleListViewModel)
     }
     
     override func tearDown() {
         subject = nil
+        mockArticleListViewModel = nil
         super.tearDown()
     }
 

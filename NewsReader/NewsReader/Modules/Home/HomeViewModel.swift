@@ -1,5 +1,5 @@
 //
-//  NewsReaderHomeViewModel.swift
+//  HomeViewModel.swift
 //  NewsReader
 //
 //  Created by Varun Mehta on 13/9/24.
@@ -19,13 +19,13 @@ protocol NewsReaderCategoryChangeableProtocol {
     func onChangeSelectedCategory(_ type: ArticleCategoryTypes)
 }
 
-protocol NewsReaderHomeViewModelProtocol: NewsReaderCategoryChangeableProtocol, ObservableObject {
+protocol HomeViewModelProtocol: NewsReaderCategoryChangeableProtocol, ObservableObject {
     var categoriesData: [CategoryTypeDisplayModel] { get }
     func getArticleListViewModel() -> ArticleListViewModelProtocol
 }
 
 
-class NewsReaderHomeViewModel: NewsReaderHomeViewModelProtocol  {
+class HomeViewModel: HomeViewModelProtocol  {
     
     @Published
     private(set) var categoriesData:[CategoryTypeDisplayModel] = []
@@ -57,7 +57,7 @@ class NewsReaderHomeViewModel: NewsReaderHomeViewModelProtocol  {
     
 }
 
-extension NewsReaderHomeViewModel : NewsReaderCategoryChangeableProtocol{
+extension HomeViewModel : NewsReaderCategoryChangeableProtocol{
     func onChangeSelectedCategory(_ type: ArticleCategoryTypes) {
         categoriesData = categoriesData.map { model in
             var updatedModel = model

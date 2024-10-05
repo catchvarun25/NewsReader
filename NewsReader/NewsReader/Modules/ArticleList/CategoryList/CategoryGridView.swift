@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct CategoriesGridView<ViewModel: NewsReaderHomeViewModelProtocol>: View {
+struct CategoriesGridView<ViewModel: HomeViewModelProtocol>: View {
     @ObservedObject var viewModel: ViewModel
     
     var rows: [GridItem] = [

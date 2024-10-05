@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let homeHoistingView = UIHostingController(rootView: NewsReaderHomeView())
+        let homeHoistingView = UIHostingController(rootView: HomeView())
         let navigationController = UINavigationController(rootViewController: homeHoistingView )
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController

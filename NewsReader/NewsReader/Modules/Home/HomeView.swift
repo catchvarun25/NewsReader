@@ -1,5 +1,5 @@
 //
-//  NewsReaderHomeView.swift
+//  HomeView.swift
 //  NewsReader
 //
 //  Created by Varun Mehta on 28/9/24.
@@ -8,10 +8,10 @@
 
 import SwiftUI
 
-struct NewsReaderHomeView<ViewModel: NewsReaderHomeViewModelProtocol>: View {
+struct HomeView<ViewModel: HomeViewModelProtocol>: View {
     @StateObject private var viewModel: ViewModel
     @State var navigateToBookMark: Bool = false
-    init(viewModel: ViewModel = NewsReaderHomeViewModel()) {
+    init(viewModel: ViewModel = HomeViewModel()) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     var body: some View {
@@ -44,7 +44,7 @@ struct NewsReaderHomeView<ViewModel: NewsReaderHomeViewModelProtocol>: View {
     }
 }
 
-extension NewsReaderHomeView {
+extension HomeView {
     private enum Constants {
         static var kHeightCategoryList: CGFloat {
             return 44.0
