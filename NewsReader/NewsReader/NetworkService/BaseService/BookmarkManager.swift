@@ -13,7 +13,6 @@ protocol BookmarkManagerProtocol {
     func getBookmarkedArticles() -> [ArticleDisplayModel]
     func addToBookmark(_ article: ArticleDisplayModel)
     func removeFromBookmark(_ article: ArticleDisplayModel)
-    func removeAllBookmarks()
 }
 
 class BookmarkManager: BookmarkManagerProtocol {
@@ -49,10 +48,5 @@ class BookmarkManager: BookmarkManagerProtocol {
             defaults.setValue(data, forKey: UserDefaults.Keys.bookmarkedArticles)
             defaults.synchronize()
         }
-    }
-    
-    func removeAllBookmarks() {
-        defaults.removeObject(forKey: UserDefaults.Keys.bookmarkedArticles)
-        defaults.synchronize()
-    }
+    }    
 }

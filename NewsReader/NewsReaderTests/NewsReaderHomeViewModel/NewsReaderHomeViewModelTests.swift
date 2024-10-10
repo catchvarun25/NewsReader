@@ -45,7 +45,6 @@ class HomeViewModelTests: XCTestCase {
     
     func testOnChangeSelectedCategory() {
         // Given
-        let initialSelectedCategory = AppConstants.kDefaultSelectedCategory
         let newSelectedCategory = ArticleCategoryTypes.health
         
         let expectation = XCTestExpectation(description: "Selected category should be updated")

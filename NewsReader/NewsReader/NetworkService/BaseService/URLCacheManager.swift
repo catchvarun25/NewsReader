@@ -36,5 +36,5 @@ extension URLCacheManager: URLCacheManagerProtocol {
     func storeResponse(_ response: URLResponse, for request: URLRequest, data: Data) {
         let cachedResponse = CachedURLResponse(response: response, data: data)
         cache.storeCachedResponse(cachedResponse, for: request)
-    }
+    }    
 }

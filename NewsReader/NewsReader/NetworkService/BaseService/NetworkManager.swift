@@ -16,14 +16,18 @@ protocol Fetchable {
 
 class NetworkManager {
     private let cacheManager: URLCacheManagerProtocol
-    private lazy var session: URLSession = {
+    private let session: URLSession
+    
+    init(cacheManager: URLCacheManagerProtocol = URLCacheManager.shared,
+         session: URLSession = NetworkManager.defaultSession()) {
+        self.cacheManager = cacheManager
+        self.session = session
+    }
+    
+    static func defaultSession() -> URLSession {
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = AppConstants.Network.kRequestTimeOut
         return URLSession(configuration: configuration)
-    }()
-    
-    init(cacheManager: URLCacheManagerProtocol = URLCacheManager.shared) {
-        self.cacheManager = cacheManager
     }
 }
 
@@ -35,7 +39,7 @@ extension NetworkManager: Fetchable {
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         do {
-            let (data, _) = try await URLSession.shared.data(for: request)
+            let (data, _) = try await session.data(for: request)
             return try JSONParser.decode(data)
         } catch {
             throw APIError.requestFailed(mesage: "Request Failed! Please check your connectivity or try again.")
